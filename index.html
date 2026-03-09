@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graham Young – Staff Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0a0a0a;
+      --card-bg: #141414;
+      --accent: #00bfff;
+      --white: #ffffff;
+      --text-secondary: #bbbbbb;
+      --text-muted: #7d7d7d;
+      --text-dim: #424242;
+      --text-dark: #606060;
+      --text-darkest: #535353;
+      --px: 120px;
+      --max-w: 1440px;
+    }
+
+    html, body {
+      background-color: var(--bg);
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.4;
+      overflow-x: hidden;
+    }
+
+    /* ─── LAYOUT WRAPPER ─── */
+    .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--px);
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 40px var(--px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-avatar {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .nav-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .nav-email {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      width: 40px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: var(--white);
+      border-radius: 1px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--px);
+      position: relative;
+      min-height: 480px;
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 556px;
+      height: 638px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 24px;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      padding-bottom: 36px;
+    }
+
+    .hero-label {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: -0.36px;
+      margin-bottom: 20px;
+    }
+
+    .hero-label .slash {
+      color: var(--accent);
+      margin: 0 8px;
+    }
+
+    .hero-slogan {
+      font-size: 70px;
+      font-weight: 800;
+      line-height: 74px;
+      letter-spacing: -1.4px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .hero-desc {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 36px;
+      letter-spacing: -0.48px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin-bottom: 28px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--accent);
+      color: #141414;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.36px;
+      padding: 20px 32px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    /* ─── LOGO STRIP ─── */
+    .logos {
+      max-width: var(--max-w);
+      margin: 16px auto 0;
+      padding: 16px var(--px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0.6;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--white);
+    }
+
+    /* ─── SECTION TITLE ─── */
+    .section-title {
+      font-size: 80px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      line-height: 1;
+      margin-bottom: 80px;
+    }
+
+    /* ─── PROJECTS ─── */
+    .projects {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--px);
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      height: 589px;
+      display: flex;
+    }
+
+    .project-card--tall {
+      height: 635px;
+    }
+
+    .project-info {
+      flex: 0 0 420px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-title {
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 52px;
+      letter-spacing: -0.88px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0;
+      max-width: 360px;
+    }
+
+    .project-stats {
+      display: flex;
+      gap: 16px;
+      margin-top: auto;
+    }
+
+    .stat {
+      background: #0a0a0a;
+      border-radius: 4px;
+      padding: 24px;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: 0.32px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.14px;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.3;
+    }
+
+    .btn-case-study {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--accent);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.16px;
+      padding: 0;
+      text-decoration: none;
+      margin-top: 24px;
+      align-self: flex-start;
+      line-height: 1;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 2px;
+    }
+
+    .project-visual {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .project-phone-img {
+      display: block;
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+      object-position: bottom center;
+    }
+
+    /* ─── REVIEWS ─── */
+    .reviews {
+      max-width: var(--max-w);
+      margin: 120px auto 0;
+      padding: 0 var(--px);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 49px;
+    }
+
+    .review-card {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .stars img {
+      height: 24px;
+      width: auto;
+    }
+
+    .review-quote {
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--white);
+    }
+
+    .review-author {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--text-muted);
+    }
+
+    .reviews-nav {
+      display: flex;
+      gap: 6px;
+      margin-top: 60px;
+    }
+
+    .arrow-btn {
+      width: 47px;
+      height: 47px;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .arrow-btn svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ─── ABOUT ─── */
+    .about {
+      max-width: var(--max-w);
+      margin: 120px auto 0;
+      padding: 0 var(--px);
+    }
+
+    .about-card {
+      background: #060606;
+      border-radius: 24px;
+      overflow: hidden;
+      min-height: 794px;
+      display: flex;
+    }
+
+    .about-text {
+      flex: 0 0 580px;
+      padding: 71px 44px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .about-heading {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -0.96px;
+      color: var(--accent);
+      margin-bottom: 28px;
+      line-height: 1;
+    }
+
+    .about-sub {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.19;
+      letter-spacing: -0.48px;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+
+    .about-body {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: -0.3px;
+      color: var(--text-dim);
+    }
+
+    .about-body p + p {
+      margin-top: 1.2em;
+    }
+
+    .about-contact {
+      margin-top: auto;
+      padding-top: 56px;
+    }
+
+    .about-contact-cta {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.48px;
+      line-height: 1.19;
+      margin-bottom: 8px;
+    }
+
+    .about-contact-links {
+      display: flex;
+      gap: 100px;
+    }
+
+    .about-contact-links a {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.19;
+      letter-spacing: -0.48px;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .about-photo-wrap {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-photo-wrap img {
+      width: 510px;
+      height: 618px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    /* ─── APPROACH ─── */
+    .approach {
+      max-width: var(--max-w);
+      margin: 120px auto 0;
+      padding: 0 var(--px);
+    }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 80px 40px;
+    }
+
+    .approach-item {
+      display: flex;
+      gap: 16px;
+    }
+
+    .approach-num {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+
+    .approach-body h3 {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .approach-body p {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--text-dark);
+    }
+
+    /* ─── CURRENTLY ─── */
+    .currently {
+      max-width: var(--max-w);
+      margin: 120px auto 0;
+      padding: 0 var(--px);
+    }
+
+    .currently-inner {
+      border-top: 1px solid #1e1e1e;
+      border-bottom: 1px solid #1e1e1e;
+      padding: 48px 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+
+    .currently-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .currently-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-dim);
+    }
+
+    .currently-value {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--text-secondary);
+    }
+
+    /* ─── QUOTE ─── */
+    .quote-section {
+      max-width: var(--max-w);
+      margin: 120px auto 0;
+      padding: 0 var(--px);
+    }
+
+    .quote-divider {
+      height: 2px;
+      background: #1e1e1e;
+      margin-bottom: 0;
+    }
+
+    .quote-inner {
+      position: relative;
+      padding: 60px 0 80px;
+      overflow: hidden;
+    }
+
+    .quote-mark {
+      font-size: 429px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.1);
+      line-height: 0.6;
+      position: absolute;
+      pointer-events: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .quote-mark--open {
+      top: 0;
+      left: -30px;
+    }
+
+    .quote-mark--close {
+      bottom: 0;
+      right: 0;
+      transform: rotate(180deg);
+    }
+
+    .quote-title {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+      max-width: 677px;
+      margin-bottom: 27px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-attribution {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--text-muted);
+      position: relative;
+      z-index: 1;
+      margin-top: 27px;
+    }
+
+    /* ─── FOOTER / LET'S CHAT ─── */
+    .footer {
+      max-width: var(--max-w);
+      margin: 120px auto 0;
+      padding: 0 var(--px) 80px;
+    }
+
+    .footer-title {
+      font-size: 120px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 48px;
+      letter-spacing: -2px;
+    }
+
+    .footer-sub {
+      font-size: 40px;
+      font-weight: 500;
+      color: var(--text-darkest);
+      line-height: 1.16;
+      margin-bottom: 60px;
+      max-width: 700px;
+    }
+
+    .footer-divider {
+      height: 2px;
+      background: #1e1e1e;
+      margin-bottom: 60px;
+    }
+
+    .footer-contact-email {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .footer-ic-signal {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-dim);
+      margin-bottom: 35px;
+    }
+
+    .footer-linkedin {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      text-decoration: none;
+    }
+
+    .footer-linkedin-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .footer-linkedin-label {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--text-darkest);
+    }
+
+    .footer-copyright {
+      margin-top: 80px;
+      font-size: 16px;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    /* ═══════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════ */
+
+    /* ─── TABLET ─── */
+    @media (max-width: 1100px) {
+      :root { --px: 60px; }
+
+      .hero-slogan { font-size: 60px; line-height: 64px; }
+      .hero-photo { width: 400px; height: 500px; }
+
+      .project-card { height: auto; min-height: 480px; }
+      .project-card--tall { height: auto; min-height: 520px; }
+      .project-info { flex: 0 0 360px; }
+      .project-title { font-size: 36px; line-height: 44px; }
+
+      .about-text { flex: 0 0 460px; }
+
+      .approach-grid { gap: 60px 32px; }
+      .approach-body h3 { font-size: 26px; }
+      .approach-body p { font-size: 20px; }
+
+      .currently-inner { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+
+      .footer-title { font-size: 88px; }
+      .footer-sub { font-size: 32px; }
+
+      .quote-title { font-size: 52px; }
+      .quote-mark { font-size: 320px; }
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      :root { --px: 24px; }
+
+      /* Nav */
+      nav { padding: 24px var(--px); gap: 16px; }
+      .nav-avatar { width: 48px; height: 48px; }
+      .nav-name { font-size: 18px; }
+      .nav-email { display: none; }
+      .nav-right { gap: 24px; }
+
+      /* Hero */
+      .hero { min-height: auto; padding-bottom: 56px; }
+      .hero-photo { display: none; }
+      .hero-content { max-width: 100%; }
+      .hero-label {
+        font-size: 14px;
+        margin-bottom: 24px;
+        white-space: normal;
+        line-height: 1.5;
+      }
+      .hero-slogan {
+        font-size: 40px;
+        line-height: 44px;
+        letter-spacing: -0.8px;
+        margin-bottom: 28px;
+      }
+      .hero-desc {
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 36px;
+        max-width: 100%;
+      }
+
+      /* Logos */
+      .logos {
+        flex-wrap: wrap;
+        gap: 28px 40px;
+        justify-content: center;
+        margin-top: 32px;
+      }
+
+      /* Section title */
+      .section-title { font-size: 44px; margin-bottom: 48px; }
+
+      /* Projects */
+      .projects { gap: 40px; }
+
+      .project-card {
+        flex-direction: column;
+        height: auto;
+      }
+      .project-card--tall { height: auto; }
+
+      .project-info {
+        flex: none;
+        width: 100%;
+        padding: 32px 24px 24px;
+      }
+      .project-title {
+        font-size: 28px;
+        line-height: 34px;
+        letter-spacing: -0.5px;
+        max-width: 100%;
+      }
+      .project-stats { gap: 12px; margin-top: 28px; }
+      .stat { width: auto; flex: 1; padding: 16px 12px; }
+      .stat-value { font-size: 22px; }
+      .stat-label { font-size: 13px; }
+      .btn-case-study {
+        align-self: stretch;
+        justify-content: center;
+        margin-top: 24px;
+        padding: 20px 24px;
+        border: 1px solid var(--accent);
+        padding-bottom: 20px;
+      }
+
+      .project-visual {
+        height: 320px;
+        align-items: center;
+      }
+      .project-phone-img {
+        height: 100%;
+        width: auto;
+      }
+
+      /* Reviews */
+      .reviews { margin-top: 80px; }
+      .reviews-grid { grid-template-columns: 1fr; gap: 40px; }
+      .review-quote { font-size: 22px; }
+      .review-author { font-size: 18px; }
+      .reviews-nav { margin-top: 40px; }
+
+      /* About */
+      .about { margin-top: 80px; }
+      .about-card { flex-direction: column; min-height: auto; }
+      .about-text {
+        flex: none;
+        width: 100%;
+        padding: 48px 32px 40px;
+      }
+      .about-heading { font-size: 36px; }
+      .about-sub { font-size: 20px; }
+      .about-body { font-size: 18px; }
+      .about-contact-links { gap: 32px; flex-wrap: wrap; }
+      .about-contact-links a { font-size: 18px; }
+      .about-contact-cta { font-size: 20px; }
+      .about-photo-wrap {
+        min-height: 300px;
+        align-items: stretch;
+      }
+      .about-photo-wrap img {
+        width: 100%;
+        height: 320px;
+        border-radius: 0;
+      }
+
+      /* Approach */
+      .approach { margin-top: 80px; }
+      .approach-grid { grid-template-columns: 1fr; gap: 40px; }
+      .approach-num { font-size: 26px; }
+      .approach-body h3 { font-size: 24px; margin-bottom: 10px; }
+      .approach-body p { font-size: 18px; }
+
+      /* Currently */
+      .currently { margin-top: 80px; }
+      .currently-inner { grid-template-columns: repeat(2, 1fr); gap: 28px 20px; padding: 36px 0; }
+      .currently-value { font-size: 17px; }
+
+      /* Quote */
+      .quote-section { margin-top: 80px; }
+      .quote-inner { padding: 40px 0 60px; }
+      .quote-title { font-size: 32px; line-height: 1.15; }
+      .quote-mark { font-size: 180px; }
+      .quote-mark--open { left: -15px; }
+      .quote-attribution { font-size: 18px; }
+
+      /* Footer */
+      .footer { margin-top: 80px; padding-bottom: 60px; }
+      .footer-title { font-size: 52px; letter-spacing: -1px; margin-bottom: 24px; }
+      .footer-sub { font-size: 22px; margin-bottom: 40px; }
+      .footer-contact-email { font-size: 18px; }
+      .footer-linkedin-label { font-size: 18px; }
+      .footer-copyright { margin-top: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <header>
+    <nav>
+      <div class="nav-left">
+        <div class="nav-avatar">
+          <img src="./images/avatar.png" alt="Graham Young">
+        </div>
+        <div>
+          <div class="nav-name">Graham Young</div>
+        </div>
+      </div>
+      <div class="nav-right">
+        <a href="mailto:graham@grahamyoung.com" class="nav-email">graham@grahamyoung.com</a>
+        <div class="hamburger" role="button" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <img
+      class="hero-photo"
+      src="./images/hero-photo.png"
+      alt=""
+      aria-hidden="true"
+    >
+    <div class="hero-content">
+      <p class="hero-label">Staff Product Designer<span class="slash">/</span>14 years</p>
+      <h1 class="hero-slogan">Human experiences. Built to earn trust at scale.</h1>
+      <p class="hero-desc">I partner with teams to navigate complexity and ship products that feel worthy of the people using them.</p>
+      <a href="mailto:graham@grahamyoung.com" class="btn-primary">Let's chat</a>
+    </div>
+  </section>
+
+  <!-- ═══ COMPANY LOGOS ═══ -->
+  <div class="logos">
+    <span class="logo-text">Porch</span>
+    <span class="logo-text">Zillow</span>
+    <span class="logo-text">Meta</span>
+    <span class="logo-text">Trulia</span>
+    <span class="logo-text">Remitly</span>
+  </div>
+
+  <!-- ═══ PROJECTS ═══ -->
+  <section class="projects" style="margin-top: 28px;">
+
+    <!-- Project 1: Remitly -->
+    <article class="project-card">
+      <div class="project-info">
+        <h2 class="project-title">Emergency credit that builds trust, not traps</h2>
+        <div class="project-stats">
+          <div class="stat">
+            <span class="stat-value">5,500</span>
+            <span class="stat-label">Loans Approved</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">44%</span>
+            <span class="stat-label">Repaid &amp; Reused</span>
+          </div>
+        </div>
+        <a href="mailto:graham@grahamyoung.com" class="btn-case-study">Ask me about this</a>
+      </div>
+      <div class="project-visual">
+        <img class="project-phone-img" src="/images/phone-remitly.png" alt="Remitly Pay Later mobile app">
+      </div>
+    </article>
+
+    <!-- Project 2: Zillow -->
+    <article class="project-card project-card--tall">
+      <div class="project-info">
+        <h2 class="project-title">Helping landlords feel confident &amp; renters find better homes</h2>
+        <div class="project-stats">
+          <div class="stat">
+            <span class="stat-value">64%</span>
+            <span class="stat-label">Increase in New &amp; Reactivated Listings</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">One</span>
+            <span class="stat-label">New multi-step framework created</span>
+          </div>
+        </div>
+        <a href="mailto:graham@grahamyoung.com" class="btn-case-study">Ask me about this</a>
+      </div>
+      <div class="project-visual">
+        <img class="project-phone-img" src="/images/phone-zillow.png" alt="Zillow rental listing mobile app">
+      </div>
+    </article>
+
+    <!-- Project 3: Facebook Marketplace -->
+    <article class="project-card project-card--tall">
+      <div class="project-info">
+        <h2 class="project-title">Making it feel safe to buy from a stranger</h2>
+        <div class="project-stats">
+          <div class="stat">
+            <span class="stat-value">1.4M</span>
+            <span class="stat-label">Daily active users engaged</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">30%</span>
+            <span class="stat-label">Increase in Commerce Profile sessions</span>
+          </div>
+        </div>
+        <a href="mailto:graham@grahamyoung.com" class="btn-case-study">Ask me about this</a>
+      </div>
+      <div class="project-visual">
+        <img class="project-phone-img" src="/images/phone-facebook.png" alt="Facebook Marketplace Commerce Profile">
+      </div>
+    </article>
+
+  </section>
+
+  <!-- ═══ REVIEWS ═══ -->
+  <section class="reviews">
+    <p class="section-title">Rave Reviews</p>
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <div class="stars">
+          <svg width="108" height="18" viewBox="0 0 108 18" xmlns="http://www.w3.org/2000/svg" aria-label="5 stars"><text y="15" font-size="17" fill="#00bfff" font-family="sans-serif">★★★★★</text></svg>
+        </div>
+        <p class="review-quote">"Graham is a deep-thinking, strategic designer who always pushes for the why and how. The diverse experiences he brings — from gaming to traditional product design — lead to his ability to think critically and laterally."</p>
+        <p class="review-author">Caitlyn McCarthy, Senior Product Designer</p>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">
+          <svg width="108" height="18" viewBox="0 0 108 18" xmlns="http://www.w3.org/2000/svg" aria-label="5 stars"><text y="15" font-size="17" fill="#00bfff" font-family="sans-serif">★★★★★</text></svg>
+        </div>
+        <p class="review-quote">"Graham's a purposeful, collaborative, and talented designer who cares deeply not only for the experiences he creates, but for the teams and individuals he works with."</p>
+        <p class="review-author">Jeremy Squadroni, Product Designer</p>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">
+          <svg width="108" height="18" viewBox="0 0 108 18" xmlns="http://www.w3.org/2000/svg" aria-label="5 stars"><text y="15" font-size="17" fill="#00bfff" font-family="sans-serif">★★★★★</text></svg>
+        </div>
+        <p class="review-quote">"Graham immensely improves any team, product, and user experience he's involved with."</p>
+        <p class="review-author">Lauren Curtis, Senior Product Designer, Spotify</p>
+      </div>
+
+    </div>
+
+    <div class="reviews-nav">
+      <button class="arrow-btn" aria-label="Previous">
+        <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="23.5" cy="23.5" r="23" stroke="#333"/><path d="M26 16l-7 7.5 7 7.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="arrow-btn" aria-label="Next">
+        <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="23.5" cy="23.5" r="23" stroke="#333"/><path d="M21 16l7 7.5-7 7.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT / HI I'M GRAHAM ═══ -->
+  <section class="about">
+    <div class="about-card">
+      <div class="about-text">
+        <h2 class="about-heading">Hi, I'm Graham</h2>
+        <p class="about-sub">I make the hard, ambiguous problems worth solving.</p>
+        <div class="about-body">
+          <p>Fourteen years designing products at the intersection of people, systems, and trust. Fintech, marketplaces, real estate, consumer platforms — different domains, same question: what's actually at stake for the person on the other side of this screen?</p>
+          <p>I think in connections. I find the gap between what a product does and what a person actually needs, then work with teams to close it — through early prototypes, honest conversations, and a lot of iteration. The most useful thing I can do is help a team see clearly and move forward with conviction.</p>
+          <p>Outside the work, I take cues from everywhere. How a great game earns your trust without a tutorial. How a film establishes stakes in the first ten minutes. How Disney hides every seam so the magic feels inevitable. The designers I follow — Matt D. Smith, Claudio Guglieri, Dann Petty — treat craft as a form of respect for the audience. So do I.</p>
+          <p>I'm looking for a Staff IC role — large scope, genuinely hard problems, alongside people who care about getting it right.</p>
+        </div>
+        <div class="about-contact">
+          <p class="about-contact-cta">Let's chat</p>
+          <div class="about-contact-links">
+            <a href="mailto:graham@grahamyoung.com">graham@grahamyoung.com</a>
+            <a href="https://linkedin.com/in/grahamyoung" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="about-photo-wrap">
+        <img src="./images/about-photo.png" alt="Graham Young">
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ APPROACH ═══ -->
+  <section class="approach">
+    <p class="section-title">Approach</p>
+    <div class="approach-grid">
+
+      <div class="approach-item">
+        <span class="approach-num">01</span>
+        <div class="approach-body">
+          <h3>I think best in the open</h3>
+          <p>I design in a way that invites input early, so progress happens together instead of in isolation.</p>
+        </div>
+      </div>
+
+      <div class="approach-item">
+        <span class="approach-num">02</span>
+        <div class="approach-body">
+          <h3>I follow the curiosity</h3>
+          <p>The most interesting problems don't announce themselves. I stay close to what's strange or broken until I understand why.</p>
+        </div>
+      </div>
+
+      <div class="approach-item">
+        <span class="approach-num">03</span>
+        <div class="approach-body">
+          <h3>I make ideas visible</h3>
+          <p>Prototypes give teams something real to react to. I'd rather show than describe.</p>
+        </div>
+      </div>
+
+      <div class="approach-item">
+        <span class="approach-num">04</span>
+        <div class="approach-body">
+          <h3>I surface decisions and tradeoffs</h3>
+          <p>Naming constraints and choices helps teams commit and move forward with confidence.</p>
+        </div>
+      </div>
+
+      <div class="approach-item">
+        <span class="approach-num">05</span>
+        <div class="approach-body">
+          <h3>I look for patterns in unexpected places</h3>
+          <p>Games, films, lived experience — everything is input. The best design moves often come from outside the product.</p>
+        </div>
+      </div>
+
+      <div class="approach-item">
+        <span class="approach-num">06</span>
+        <div class="approach-body">
+          <h3>I iterate with others, not alone</h3>
+          <p>The best ideas come through conversation. I prototype early so we have something real to argue about.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CURRENTLY ═══ -->
+  <section class="currently">
+    <div class="currently-inner">
+      <div class="currently-item">
+        <span class="currently-label">Playing</span>
+        <span class="currently-value">Absalom</span>
+      </div>
+      <div class="currently-item">
+        <span class="currently-label">Watching</span>
+        <span class="currently-value">One Piece Season 2</span>
+      </div>
+      <div class="currently-item">
+        <span class="currently-label">Reading</span>
+        <span class="currently-value">Project Hail Mary</span>
+      </div>
+      <div class="currently-item">
+        <span class="currently-label">Building</span>
+        <span class="currently-value">A Season Ticketholder management and resale platform for loyal sports fans</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ QUOTE ═══ -->
+  <section class="quote-section">
+    <div class="quote-divider"></div>
+    <div class="quote-inner">
+      <span class="quote-mark quote-mark--open">"</span>
+      <p class="quote-title">Design is about imagining the world you want to live in — and then figuring out how to build it.</p>
+      <p class="quote-attribution">— Bob Baxley</p>
+      <span class="quote-mark quote-mark--close">"</span>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER / LET'S CHAT ═══ -->
+  <footer class="footer">
+    <h2 class="footer-title">Let's chat</h2>
+    <p class="footer-sub">Good work gets better when people think together.</p>
+    <div class="footer-divider"></div>
+    <a href="mailto:graham@grahamyoung.com" class="footer-contact-email">graham@grahamyoung.com</a>
+    <p class="footer-ic-signal">Currently open to Staff IC opportunities</p>
+    <a href="https://linkedin.com/in/grahamyoung" class="footer-linkedin" target="_blank" rel="noopener">
+      <svg class="footer-linkedin-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <span class="footer-linkedin-label">LinkedIn</span>
+    </a>
+    <p class="footer-copyright">© 2026</p>
+  </footer>
+
+</body>
+</html>
