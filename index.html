@@ -224,93 +224,106 @@
       padding: 0 var(--px);
       display: flex;
       flex-direction: column;
-      gap: 60px;
+      gap: 24px;
     }
 
     .project-card {
       background: var(--card-bg);
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
       position: relative;
-      height: 589px;
+      height: 580px;
       display: flex;
-    }
-
-    .project-card--tall {
-      height: 635px;
     }
 
     .project-info {
       flex: 0 0 420px;
-      padding: 40px;
+      padding: 44px 44px 44px 48px;
       display: flex;
       flex-direction: column;
       position: relative;
       z-index: 1;
     }
 
+    .project-company {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+
     .project-title {
-      font-size: 44px;
+      font-size: 28px;
       font-weight: 800;
-      line-height: 52px;
-      letter-spacing: -0.88px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
       text-transform: uppercase;
       color: var(--white);
-      margin-bottom: 0;
+      margin-bottom: 28px;
       max-width: 360px;
     }
 
     .project-stats {
       display: flex;
-      gap: 16px;
-      margin-top: auto;
+      gap: 12px;
+      margin-top: 0;
     }
 
     .stat {
-      background: #0a0a0a;
-      border-radius: 4px;
-      padding: 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 20px 16px;
       text-align: center;
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 8px;
       align-items: center;
     }
 
     .stat-value {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 800;
-      letter-spacing: 0.32px;
+      letter-spacing: -0.02em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.4);
+      color: rgba(255, 255, 255, 0.85);
       line-height: 1;
     }
 
     .stat-label {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.14px;
+      letter-spacing: 0.01em;
       color: rgba(255, 255, 255, 0.4);
-      line-height: 1.3;
+      line-height: 1.35;
     }
 
     .btn-case-study {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 6px;
       background: transparent;
       color: var(--accent);
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
-      letter-spacing: 0.16px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       padding: 0;
       text-decoration: none;
-      margin-top: 24px;
+      margin-top: auto;
       align-self: flex-start;
       line-height: 1;
-      border-bottom: 1px solid var(--accent);
-      padding-bottom: 2px;
+      border-bottom: 1px solid rgba(0, 191, 255, 0.4);
+      padding-bottom: 3px;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .btn-case-study:hover {
+      border-color: var(--accent);
+      opacity: 0.85;
     }
 
     .project-visual {
@@ -319,14 +332,27 @@
       display: flex;
       align-items: flex-end;
       justify-content: center;
+      position: relative;
+    }
+
+    .project-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, var(--card-bg) 0%, transparent 20%);
+      pointer-events: none;
+      z-index: 1;
     }
 
     .project-phone-img {
       display: block;
-      height: 100%;
+      height: 108%;
       width: auto;
       object-fit: contain;
       object-position: bottom center;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 32px 64px rgba(0,0,0,0.7));
     }
 
     /* ─── REVIEWS ─── */
@@ -705,10 +731,9 @@
       .hero-slogan { font-size: 60px; line-height: 64px; }
       .hero-photo { width: 400px; height: 500px; }
 
-      .project-card { height: auto; min-height: 480px; }
-      .project-card--tall { height: auto; min-height: 520px; }
-      .project-info { flex: 0 0 360px; }
-      .project-title { font-size: 36px; line-height: 44px; }
+      .project-card { height: 520px; }
+      .project-info { flex: 0 0 340px; padding: 40px; }
+      .project-title { font-size: 32px; line-height: 1.15; }
 
       .about-text { flex: 0 0 460px; }
 
@@ -775,9 +800,9 @@
 
       .project-card {
         flex-direction: column;
+        min-height: auto;
         height: auto;
       }
-      .project-card--tall { height: auto; }
 
       .project-info {
         flex: none;
@@ -790,7 +815,7 @@
         letter-spacing: -0.5px;
         max-width: 100%;
       }
-      .project-stats { gap: 12px; margin-top: 28px; }
+      .project-stats { gap: 8px; margin-top: 24px; }
       .stat { width: auto; flex: 1; padding: 16px 12px; }
       .stat-value { font-size: 22px; }
       .stat-label { font-size: 13px; }
@@ -928,6 +953,7 @@
     <!-- Project 1: Remitly -->
     <article class="project-card">
       <div class="project-info">
+        <span class="project-company">Remitly</span>
         <h2 class="project-title">Emergency credit that builds trust, not traps</h2>
         <div class="project-stats">
           <div class="stat">
@@ -941,14 +967,15 @@
         </div>
         <a href="mailto:hey@grahamyoung.com" class="btn-case-study">Ask me about this</a>
       </div>
-      <div class="project-visual">
+      <div class="project-visual" style="background: radial-gradient(ellipse at 60% 100%, rgba(0,210,110,0.10) 0%, transparent 65%);">
         <img class="project-phone-img" src="/images/Remitly_Phone_Cover_img.png" alt="Remitly Pay Later mobile app">
       </div>
     </article>
 
     <!-- Project 2: Zillow -->
-    <article class="project-card project-card--tall">
+    <article class="project-card">
       <div class="project-info">
+        <span class="project-company">Zillow</span>
         <h2 class="project-title">Helping landlords feel confident &amp; renters find better homes</h2>
         <div class="project-stats">
           <div class="stat">
@@ -962,14 +989,15 @@
         </div>
         <a href="mailto:hey@grahamyoung.com" class="btn-case-study">Ask me about this</a>
       </div>
-      <div class="project-visual">
+      <div class="project-visual" style="background: radial-gradient(ellipse at 60% 100%, rgba(0,100,220,0.12) 0%, transparent 65%);">
         <img class="project-phone-img" src="/images/Zillow_Phone_Cover_img.png" alt="Zillow rental listing mobile app">
       </div>
     </article>
 
     <!-- Project 3: Facebook Marketplace -->
-    <article class="project-card project-card--tall">
+    <article class="project-card">
       <div class="project-info">
+        <span class="project-company">Meta</span>
         <h2 class="project-title">Making it feel safe to buy from a stranger</h2>
         <div class="project-stats">
           <div class="stat">
@@ -983,7 +1011,7 @@
         </div>
         <a href="mailto:hey@grahamyoung.com" class="btn-case-study">Ask me about this</a>
       </div>
-      <div class="project-visual">
+      <div class="project-visual" style="background: radial-gradient(ellipse at 60% 100%, rgba(100,60,240,0.10) 0%, transparent 65%);">
         <img class="project-phone-img" src="/images/Meta_Phone_Cover_img.png" alt="Facebook Marketplace Commerce Profile">
       </div>
     </article>
